@@ -17,8 +17,8 @@ def calculate(salary):
     if salary <= 3000:
         return 0, 0.0, "low"
     elif salary <= 6000:
-        savings = salary * 0.3
-        ratio = 30.0
+        savings = max(1000, salary * 0.35)
+        ratio = savings / salary * 100
         return savings, ratio, "mid"
     elif salary <= 10000:
         keep = 2750
@@ -330,7 +330,7 @@ class SavingsCalculator:
             self.add_message("助手",
                 f"你的月工资为 {salary:.0f} 元（区间：3000-6000）\n"
                 f"{'─' * 30}\n"
-                f"存钱比例上限：30%\n"
+                f"存钱比例上限：35%（最低 1000 元）\n"
                 f"建议每月存钱：{savings:.0f} 元\n"
                 f"存钱占比：{ratio:.1f}%\n"
                 f"每月剩余可用：{salary - savings:.0f} 元\n"
